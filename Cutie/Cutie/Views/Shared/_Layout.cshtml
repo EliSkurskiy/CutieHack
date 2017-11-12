@@ -26,13 +26,19 @@
 
 
 </head>
-<body ng-app="publicApp">
+<body ng-app="lostNFound">
 
-    <div class="container" ui-view="splash">
+   
 
+ 
+
+
+    <div ui-view="splash">
+       
     </div>
 
 
+  
 
     <script src="/Scripts/jquery-3.1.1.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
@@ -42,9 +48,29 @@
     <script src="/Scripts/angular-animate.js"></script>
     <script src="/Scripts/angular-toastr.tpls.js"></script>
     <script src="/app/public/app.public.js"></script>
+    <link href="/Scripts/angular-toastr.css" rel="stylesheet" />
+    <script src="/Scripts/respond.js"></script>
+    <script src="/Scripts/piexif.min.js"></script>
+    <script src="/Scripts/sortable.min.js"></script>
+    <script src="/Scripts/purify.min.js"></script>
+    <script src="/Scripts/fileinput.min.js"></script>
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <script src="https://maps.googleapis.com/maps/api/js?key={{googlekeyhere}}"
+            async defer></script>
 
 
+    
+
+   
     @RenderBody()
 </body>
 
 </html>
+
+
+
+
+    
+
+
+

@@ -1,0 +1,85 @@
+﻿<style>
+    .submitted .ng-invalid {
+        border: 1px solid red;
+    }
+</style>
+
+<div data-ng-controller='foundController as foundVm' class="row">
+
+    <div ng-show="foundVm.foundForm.$submitted && foundVm.foundForm.$error.required || foundVm.foundForm.$submitted && foundVm.foundForm.$error.minlength || foundVm.registerForm.$submitted && foundVm.foundForm.$error.pattern"
+         class="alert alert-danger" role="alert">
+        <strong>Warning! </strong>
+        You must fill in all the fields
+        <ul>
+            <li ng-show="foundVm.foundForm.item.$error.minlength || foundVm.foundForm.item.$error.required"> Item (*Must have at least 2 chracters)</li>
+            <li ng-show="foundVm.foundForm.name.$error.minlength || foundVm.foundForm.name.$error.required"> Name (*Must have at least 2 chracters)</li>
+            <li ng-show="foundVm.foundForm.email.$error.pattern || foundVm.foundForm.email.$error.required">Email (*Must be in a valid email format. Ex: example@found.com)</li>
+            <li ng-show="foundVm.foundForm.phoneNo.$error.pattern ||foundVm.foundForm.phoneNo.$error.required">Phone No (*Must enter a valid US phone number. Ex: XXX-XXX-XXX)</li>
+            <li ng-show="foundVm.foundForm.location.$error.minlength || foundVm.foundForm.location.$error.required">Location (*Must have at least 2 chracters)</li>
+            <li ng-show="foundVm.foundForm.description.$error.minlength || foundVm.foundForm.description.$error.required">Description (*Must have at least 5 chracters)</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Found Item</h2>
+        <form name="foundVm.foundForm" ng-class="{'submitted': submitted}" ng-submit="foundVm.onSubmitBtnClicked(foundVm.foundForm.$valid)" novalidate>
+            <div class="form-group">
+                <label for="item">Found Item</label>
+                <input type="text" name="item" id="item" class="form-control" ng-model="foundVm.found.title" required data-ng-minlength="2" />
+            </div>
+            <!--<div class="form-group">
+                <div class="fileinput fileinput-exists" data-provides="fileinput">
+                    <div class="fileinput-preview thumbnail" data-trigger="fileinput">
+                        <img id="image" ng-src="{{photoVm.image}}">
+                    </div>
+                    <div>
+                        <input ng-model="photoVm.found.photo" type="file" file-model="photoVm.photo" id="photo" name="photo" />
+                    </div>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" ng-model="foundVm.found.name" required data-ng-minlength="2" />
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" ng-model="foundVm.found.email" pattern="^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$" required />
+            </div>
+            <div class="form-group">
+                <label for="contact-phoneno">Contact Number</label>
+                <input type="tel"
+                       name="phoneNo" id="phoneNo" class="form-control"
+                       ng-model="foundVm.found.phoneNo" pattern="^\d{3}-\d{3}-\d{4}$" required />
+            </div>
+            <div class="form-group">
+                <label for="tags">Tag</label>
+                <input type="text" name="tag" id="tag" class="form-control" ng-model="foundVm.found.tag" required data-ng-minlength="2" />
+            </div>
+            <div class="form-group">
+                <label for="location">Found Location</label>
+                <select class="form-control" ng-model="foundVm.found.location">
+                    <option value="Lot 13">Lot 13</option>
+                    <option value="Bourns College of Engineering">Bourns College of Engineering</option>
+                    <option value="Department of Chemical and Environmental Engineering">Department of Chemical and Environmental Engineering</option>
+                    <option value="University of California Riverside Official Bookstore">University of California Riverside Official Bookstore</option>
+                    <option value="Parking Lot 19">Parking Lot 19</option>
+                    <option value="UCR Graduate School of Education">UCR Graduate School of Education</option>
+                    <option value="Bell Tower">Bell Tower</option>
+                </select>
+                <!--<input type="text"
+                       name="location" id="location" class="form-control"
+                       ng-model="foundVm.found.location"
+                       required data-ng-minlength="2" />-->
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="description">Description</label>
+                <textarea class="form-control flat" name=description data-ng-model="foundVm.found.description" id="contact-info" placeholder="Description of Found Item" rows="5" data-ng-minlength="5" />
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-click="submitted= true;" class="btn btn-primary">Next Page</button>
+            </div>
+        </form>
+    </div>
+
+</div>
